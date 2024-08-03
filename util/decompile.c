@@ -3079,7 +3079,7 @@ decompileSETTARGET(int n, SWF_ACTION *actions, int maxn, int is_type2)
 	{
 		INDENT
 		println("tellTarget('%s') {" ,name);
-		while(action_cnt+n<maxn)
+		for (; action_cnt+n < maxn-1; action_cnt++)
 		{
 			if (OpCode(actions, n+1+action_cnt, maxn)==SWFACTION_SETTARGET
 			    || OpCode(actions, n+1+action_cnt, maxn)==SWFACTION_SETTARGET2
@@ -3089,7 +3089,6 @@ decompileSETTARGET(int n, SWF_ACTION *actions, int maxn, int is_type2)
 			{
 				break;
 			}
-			action_cnt++;
 		}
 		decompileActions(action_cnt,&actions[n+1],gIndent+1);
 		INDENT
