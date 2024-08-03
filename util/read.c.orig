@@ -106,7 +106,7 @@ int readSBits(FILE *f, int number)
 {
   int num = readBits(f, number);
 
-  if(number && num & (1<<(number-1)))
+  if(num & (1<<(number-1)))
     return num - (1<<number);
   else
     return num;
